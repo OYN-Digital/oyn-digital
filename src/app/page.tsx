@@ -1,4 +1,5 @@
 import React, { Component, ReactNode } from "react";
+import { type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -21,7 +22,8 @@ import {
 type TProps = {
   children: ReactNode;
   className?: string;
-} & React.JSX.Element;
+  type?: string;
+};
 
 const ShadcnCard = ({ children, className }: TProps) => (
   <div
@@ -31,7 +33,7 @@ const ShadcnCard = ({ children, className }: TProps) => (
   </div>
 );
 
-const ShadcnButton = ({ children, className }: TProps) => (
+const ShadcnButton = ({ children, className, type }: TProps) => (
   <button
     className={`bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full transition-colors ${className}`}
   >
@@ -54,15 +56,14 @@ const ShadcnTextarea = (props: Record<string, unknown>) => (
 );
 
 const ServiceCard = ({
-  icon,
+  icon: Icon,
   title,
   description,
 }: {
-  icon: unknown;
+  icon: LucideIcon;
   title: string;
   description: string;
 }) => {
-  const Icon = icon;
   return (
     <ShadcnCard className="flex flex-col items-center text-center">
       <div className="bg-red-600 p-4 rounded-full mb-4">
