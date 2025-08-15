@@ -13,6 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/OYN-Outline.png",
+  },
   metadataBase: new URL("https://oyn.foreynd.space"),
   title: {
     template: "%s | OYN Digital",
