@@ -1,13 +1,14 @@
-import React, { Component, ReactNode } from "react";
-import { SiInstagram, SiWhatsapp, SiX } from "@icons-pack/react-simple-icons";
+import React, { ReactNode } from "react";
+import {
+  SiInstagram,
+  SiWhatsapp,
+  SiX,
+  SiGithub,
+} from "@icons-pack/react-simple-icons";
 import OYNOutline from "@/../public/OYN-Outline.png";
 import Image from "next/Image";
 import NextLink from "next/Link";
 import { type LucideIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Code,
   PencilRuler,
@@ -15,10 +16,7 @@ import {
   FileText,
   Mail,
   Linkedin,
-  Github,
-  ArrowRight,
   Link,
-  Sparkles,
   Smartphone,
   MapPin,
 } from "lucide-react";
@@ -37,7 +35,7 @@ const ShadcnCard = ({ children, className }: TProps) => (
   </div>
 );
 
-const ShadcnButton = ({ children, className, type }: TProps) => (
+const ShadcnButton = ({ children, className }: TProps) => (
   <button
     className={`bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full transition-colors ${className}`}
   >
@@ -224,7 +222,7 @@ const App = () => {
                   <Linkedin className="h-6 w-6" />
                 </a>
                 <a href="#" aria-label="GitHub" className="hover:text-red-400">
-                  <Github className="h-6 w-6" />
+                  <SiGithub className="h-6 w-6" />
                 </a>
                 <a href="#" aria-label="Website" className="hover:text-red-400">
                   <Link className="h-6 w-6" />
