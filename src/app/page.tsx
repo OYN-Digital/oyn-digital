@@ -1,4 +1,8 @@
 import React, { Component, ReactNode } from "react";
+import { SiInstagram, SiWhatsapp, SiX } from "@icons-pack/react-simple-icons";
+import OYNOutline from "@/../public/OYN-Outline.png";
+import Image from "next/Image";
+import NextLink from "next/Link";
 import { type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,8 +17,8 @@ import {
   Linkedin,
   Github,
   ArrowRight,
-  Sparkles,
   Link,
+  Sparkles,
   Smartphone,
   MapPin,
 } from "lucide-react";
@@ -79,25 +83,37 @@ const App = () => {
   return (
     <div className="bg-[#1a202c] min-h-screen text-gray-100 font-sans">
       {/* Bagian Navigasi (Header) */}
-      <header className="p-6 md:px-10 flex justify-between items-center bg-[#2d3748] shadow-md">
-        <div className="flex items-center space-x-2">
-          {/* Logo OYN-Digital */}
-          <div className="bg-red-600 rounded-full h-10 w-10 flex items-center justify-center">
-            <span className="text-white font-bold text-lg">OY</span>
+      <header className="md:px-10 flex justify-between items-center bg-[#2d3748] shadow-md">
+        <div className="hidden px-4 py-6 lg:container lg:mx-auto lg:flex lg:items-center">
+          <div className="flex items-center space-x-2 grow">
+            {/* Logo OYN-Digital */}
+            <NextLink href="/">
+              <Image
+                src={OYNOutline}
+                alt="OYN Digital Logo"
+                width={128}
+                draggable={false}
+              />
+            </NextLink>
           </div>
-          <span className="text-2xl font-bold">OYN-Digital</span>
+          <nav className="hidden md:flex gap-12 font-medium lg:text-xl">
+            <NextLink
+              href="#about"
+              className="hover:text-red-400 transition-colors"
+            >
+              Tentang Kami
+            </NextLink>
+            <a
+              href="#services"
+              className="hover:text-red-400 transition-colors"
+            >
+              Layanan
+            </a>
+            <a href="#contact" className="hover:text-red-400 transition-colors">
+              Kontak
+            </a>
+          </nav>
         </div>
-        <nav className="hidden md:flex space-x-6">
-          <a href="#about" className="hover:text-red-400 transition-colors">
-            Tentang Kami
-          </a>
-          <a href="#services" className="hover:text-red-400 transition-colors">
-            Layanan
-          </a>
-          <a href="#contact" className="hover:text-red-400 transition-colors">
-            Kontak
-          </a>
-        </nav>
         <ShadcnButton className="md:hidden">
           <Mail className="h-4 w-4" />
         </ShadcnButton>
@@ -107,41 +123,52 @@ const App = () => {
         {/* Bagian Hero (Selamat Datang) */}
         <section className="text-center py-20">
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 animate-fadeIn">
-            Membangun Kehadiran Digital Anda
+            Ribet sama Tugas & Proyek Digital? Sini, Biar OYN yang Urus!
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-8 animate-fadeIn delay-100">
-            OYN-Digital adalah agensi kreatif Anda untuk solusi web yang
-            inovatif, desain menawan, dan konten digital yang memukau.
+            OYN Digital siap jadi partner kreatifmu. Kami bantu bikin website
+            impian, visual branding lewat logo dan komik, edit video
+            profesional, plus asistensi penulisan dokumen biar kamu bisa fokus
+            ke hal lain.
           </p>
-          <ShadcnButton className="animate-fadeIn delay-200">
-            Mulai Proyek Anda <ArrowRight className="ml-2 h-4 w-4" />
+          <ShadcnButton className="animate-fadeIn delay-200 flex gap-2 items-center justify-center mx-auto">
+            Hubungi Kami
           </ShadcnButton>
         </section>
 
         {/* Bagian Layanan */}
-        <section id="services" className="py-20">
-          <h2 className="text-4xl font-bold text-center mb-12">Layanan Kami</h2>
+        <section id="services" className="py-20 relative">
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Apa Aja yang Kita Kerjain?
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <ServiceCard
               icon={Code}
-              title="Pengembangan Website"
-              description="Membuat situs web responsif, berkinerja tinggi, dan aman untuk bisnis Anda."
+              title="Bikin & Rawat Website Anti Ribet"
+              description="Pengen punya website buat portofolio, toko online, atau blog pribadi? Kita siap wujudin ide-ide gila kamu! Desainnya keren, responsif di semua device, dan kita yang urus maintenance-nya. Jadi, kamu tinggal terima beres aja."
             />
             <ServiceCard
               icon={PencilRuler}
-              title="Desain Grafis"
-              description="Menciptakan logo unik, identitas brand, dan elemen visual yang berkesan."
+              title="Asistensi Tugas & Dokumen"
+              description="Sering pusing sama deadline skripsi atau tugas numpuk? Nggak perlu khawatir lagi! Kita bantu proses pembuatan dan penataan dokumen, biar tugas-tugas kamu rapi, terstruktur, dan siap dikumpul. Sekarang ngerjain tugas bisa lebih chill."
             />
             <ServiceCard
               icon={Camera}
-              title="Editing Video & Foto"
-              description="Menghasilkan konten visual yang menarik dan berkualitas profesional."
+              title="Logo & Komik Estetik"
+              description="Menghasilkan konten visual yang menarik dan berkualitas profesional.Biar brand kamu punya identitas yang kuat, kita desainin logo yang otentik dan eye-catching. Mau bikin komik digital buat cerita brand atau konten, juga bisa! Kita ubah ide-idemu jadi visual yang super estetik."
             />
             <ServiceCard
               icon={FileText}
-              title="Dokumen & Konten"
-              description="Menyusun dokumen profesional dan mengelola konten digital untuk brand Anda."
+              title="Edit Video Sat-Set"
+              description="Punya footage mentah tapi bingung ngeditnya? Serahkan pada kita! Dari video promosi, konten YouTube, sampai TikTok yang viral, kita editin dengan transisi halus dan efek cinematic. Hasilnya dijamin bikin mata betah!"
             />
+          </div>
+          <div className="bg-white mt-20 py-12 w-screen relative left-1/2 -translate-x-1/2 flex flex-col items-center justify-between gap-8">
+            <p className="text-2xl text-gray-900 font-semibold">
+              Tertarik? Langsung aja kepoin portofolio kita atau tanya-tanya
+              lebih lanjut!
+            </p>
+            <ShadcnButton>Order Jasa</ShadcnButton>
           </div>
         </section>
 
@@ -149,10 +176,10 @@ const App = () => {
         <section id="about" className="py-20 max-w-3xl mx-auto">
           <ShadcnCard>
             <h2 className="text-4xl font-bold text-center mb-6">
-              Tentang OYN-Digital
+              Tentang OYN Digital
             </h2>
             <p className="text-gray-400 text-center leading-relaxed">
-              Didirikan dengan hasrat untuk inovasi, OYN-Digital adalah tim ahli
+              Didirikan dengan hasrat untuk inovasi, OYN Digital adalah tim ahli
               yang berdedikasi untuk membantu klien kami berhasil di era
               digital. Kami menggabungkan kreativitas dengan keahlian teknis
               untuk menyediakan solusi yang tidak hanya fungsional tetapi juga
@@ -223,7 +250,58 @@ const App = () => {
 
       {/* Bagian Footer */}
       <footer className="bg-[#2d3748] text-center p-6 text-gray-500">
-        &copy; {new Date().getFullYear()} OYN-Digital. All rights reserved.
+        <div className="grid grid-cols-3 container mx-auto py-8">
+          <div className="grid grid-cols-1 text-left gap-2">
+            <Image src={OYNOutline} alt="OYN Digital Logo" width={128} />
+            <div>
+              <h4 className="font-bold text-xl mt-3">OYN Digital</h4>
+              <p>Tanah Abang, Jakarta Pusat, Indonesia</p>
+              <div className="flex items-center gap-2 mt-4">
+                <SiWhatsapp /> +62 877-8847-4655
+              </div>
+              <NextLink
+                href="https://x.com/OYNDigital"
+                target="_blank"
+                className="flex items-center gap-2 mt-4"
+              >
+                <SiX /> OYNDigital
+              </NextLink>
+              <NextLink
+                href="https://instagram.com/oyn.digital"
+                target="_blank"
+                className="flex items-center gap-2 mt-4"
+              >
+                <SiInstagram /> oyn.digital
+              </NextLink>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 text-left gap-2">
+            <h4 className="font-semibold text-xl">Links</h4>
+            <ul>
+              <li>
+                <NextLink href="/services">Services</NextLink>
+              </li>
+              <li>
+                <NextLink href="/about">About</NextLink>
+              </li>
+              <li>
+                <NextLink href="/terms-of-service">Terms of Service</NextLink>
+              </li>
+              <li>
+                <NextLink href="/privacy-policies">Privacy Policies</NextLink>
+              </li>
+              <li>
+                <NextLink href="/faq">FAQ</NextLink>
+              </li>
+            </ul>
+          </div>
+          <div className="grid grid-cols-1 text-left gap-2">
+            <h4 className="font-semibold text-xl">Subscribe</h4>
+          </div>
+        </div>
+        <p>
+          &copy; {new Date().getFullYear()} OYN Digital. All rights reserved.
+        </p>
       </footer>
     </div>
   );
