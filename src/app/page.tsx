@@ -6,8 +6,8 @@ import {
   SiGithub,
 } from "@icons-pack/react-simple-icons";
 import OYNOutline from "@/../public/OYN-Outline.png";
-import Image from "next/Image";
-import NextLink from "next/Link";
+import Image from "next/image";
+import NextLink from "next/link";
 import { type LucideIcon } from "lucide-react";
 import {
   Code,
