@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: "OYN Digital",
     images: [
       {
-        url: "https://oyn.foreynd.space/OYN-1200x.png",
+        url: "https://oyn.foreynd.space/og-image.png",
         width: 1200,
         height: 630,
         alt: "OYN Digital",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description:
       "Kami adalah agensi digital kreatif yang membantu bisnis Anda tumbuh melalui desain web, pengembangan aplikasi, dan strategi pemasaran digital.",
     creator: "@OYNDigital",
-    images: ["https:/oyn.foreynd.space/OYN-1200x.png"],
+    images: ["https:/oyn.foreynd.space/og-image.png"],
   },
   authors: [{ name: "OYN Digital", url: "https://oyn.foreynd.space" }],
 };
