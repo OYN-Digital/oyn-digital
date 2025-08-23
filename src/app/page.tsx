@@ -11,26 +11,98 @@ import HeroImage from "@/../public/undraw_web-app_141a.svg";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Container from "@/components/ui/Container";
+import { Skeleton } from "@/components/ui/Skeleton";
 // icons
 import { ArrowRight, Rocket, ShieldCheck } from "lucide-react";
 // actions
 import { openWhatsApp } from "@/actions";
+import { FadeIn } from "@/components/ui/FadeIn";
 
+// =====================
+// Lazy Components + Skeleton
+// =====================
 const Services = dynamic(() => import("@/components/home/Services"), {
   ssr: false,
+  loading: () => (
+    <div className="py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Skeleton className="h-6 w-40 mb-4" />
+        <Skeleton className="h-4 w-60 mb-10" />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <Skeleton key={i} className="h-40 w-full rounded-xl" />
+          ))}
+        </div>
+      </div>
+    </div>
+  ),
 });
+
 const Portfolio = dynamic(() => import("@/components/home/Portfolio"), {
   ssr: false,
+  loading: () => (
+    <div className="py-20 bg-[var(--color-soft)]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Skeleton className="h-6 w-40 mb-4" />
+        <Skeleton className="h-4 w-60 mb-10" />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <Skeleton key={i} className="aspect-[4/3] rounded-xl" />
+          ))}
+        </div>
+      </div>
+    </div>
+  ),
 });
+
 const Pricing = dynamic(() => import("@/components/home/Pricing"), {
   ssr: false,
+  loading: () => (
+    <div className="py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-6 md:grid-cols-3">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <Skeleton key={i} className="h-72 w-full rounded-xl" />
+        ))}
+      </div>
+    </div>
+  ),
 });
+
 const Testimonials = dynamic(() => import("@/components/home/Testimonials"), {
   ssr: false,
+  loading: () => (
+    <div className="py-20 bg-[var(--color-soft)]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid gap-6 md:grid-cols-3">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <Skeleton key={i} className="h-48 w-full rounded-xl" />
+        ))}
+      </div>
+    </div>
+  ),
 });
-const CTA = dynamic(() => import("@/components/home/CTA"), { ssr: false });
+
+const CTA = dynamic(() => import("@/components/home/CTA"), {
+  ssr: false,
+  loading: () => (
+    <div className="py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Skeleton className="h-40 w-full rounded-3xl" />
+      </div>
+    </div>
+  ),
+});
+
 const Footer = dynamic(() => import("@/components/home/Footer"), {
   ssr: false,
+  loading: () => (
+    <div className="border-t border-gray-200 py-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-6">
+        <Skeleton className="h-12 w-32" />
+        <Skeleton className="h-4 w-40" />
+        <Skeleton className="h-4 w-24" />
+      </div>
+    </div>
+  ),
 });
 
 // Smooth scroll to an element id
@@ -86,12 +158,24 @@ export default function OYNHomepage() {
       <Navbar />
       <Hero />
       <TrustBar />
-      <Services />
-      <Portfolio />
-      <Pricing />
-      <Testimonials />
-      <CTA />
-      <Footer />
+      <FadeIn>
+        <Services />
+      </FadeIn>
+      <FadeIn>
+        <Portfolio />
+      </FadeIn>
+      <FadeIn>
+        <Pricing />
+      </FadeIn>
+      <FadeIn>
+        <Testimonials />
+      </FadeIn>
+      <FadeIn>
+        <CTA />
+      </FadeIn>
+      <FadeIn>
+        <Footer />
+      </FadeIn>
     </div>
   );
 }
