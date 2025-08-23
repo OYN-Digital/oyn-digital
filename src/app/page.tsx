@@ -2,6 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import OYNDigitalOutline from "@/../public/OYN-Outline.png";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
@@ -18,6 +20,15 @@ import {
   Star,
   Quote,
 } from "lucide-react";
+import { openWhatsApp } from "@/actions";
+
+function scrollToPath(path: string, id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth" });
+
+  window.history.pushState({}, "", path);
+}
 
 export default function OYNHomepage() {
   return (
@@ -53,31 +64,53 @@ function Navbar() {
     <div className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/90 border-b border-gray-200">
       <Container className="flex h-16 items-center justify-between">
         <div className="flex items-center gap-3">
-          {/* Replace with /logo.svg */}
-          {/* <div className="h-8 w-8 rounded-lg bg-brand" /> */}
-          <Image
-            src={OYNDigitalOutline}
-            alt="Logo OYN Digital"
-            className="h-12 w-fit"
-          />
-          {/* <span className="font-semibold">OYN Digital</span> */}
+          <Link href="/">
+            <Image
+              src={OYNDigitalOutline}
+              alt="Logo OYN Digital"
+              className="h-12 w-fit"
+            />
+          </Link>
         </div>
         <nav className="hidden md:flex items-center gap-8 text-sm">
-          <a href="#services" className="hover:text-brand transition-colors">
+          <Button
+            onClick={() => scrollToPath("/services", "services")}
+            variant="ghost"
+            className="hover:text-brand transition-colors"
+          >
             Layanan
-          </a>
-          <a href="#portfolio" className="hover:text-brand transition-colors">
+          </Button>
+          <Button
+            onClick={() => scrollToPath("/portfolio", "portfolio")}
+            variant="ghost"
+            className="hover:text-brand transition-colors"
+          >
             Portfolio
-          </a>
-          <a href="#pricing" className="hover:text-brand transition-colors">
+          </Button>
+          <Button
+            onClick={() => scrollToPath("/pricing", "pricing")}
+            variant="ghost"
+            className="hover:text-brand transition-colors"
+          >
             Pricing
-          </a>
-          <a href="#contact" className="hover:text-brand transition-colors">
+          </Button>
+          <Button
+            onClick={() => scrollToPath("/contact", "contact")}
+            variant="ghost"
+            className="hover:text-brand transition-colors"
+          >
             Kontak
-          </a>
+          </Button>
         </nav>
         <div className="flex items-center gap-2">
-          <Button className="hidden sm:inline-flex bg-brand hover:bg-brand-dark">
+          <Button
+            className="hidden sm:inline-flex bg-brand hover:bg-brand-dark"
+            onClick={() =>
+              openWhatsApp(
+                "Halo OYN Digital, saya tertarik untuk order sekarang."
+              )
+            }
+          >
             Order Sekarang
           </Button>
         </div>
@@ -136,13 +169,26 @@ function Hero() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="mt-8 flex flex-wrap items-center gap-3"
           >
-            <Button size="lg" className="bg-brand hover:bg-brand-dark">
+            <Button
+              size="lg"
+              className="bg-brand hover:bg-brand-dark"
+              onClick={() =>
+                openWhatsApp(
+                  "Halo OYN Digital, saya tertarik untuk order sekarang."
+                )
+              }
+            >
               Mulai Proyek <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
               variant="outline"
               size="lg"
               className="border-brand text-brand hover:bg-brand/10"
+              onClick={() => {
+                document
+                  .getElementById("services")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               Lihat Layanan
             </Button>
@@ -484,6 +530,11 @@ function CTA() {
                 size="lg"
                 variant="secondary"
                 className="bg-white text-brand hover:bg-gray-100"
+                onClick={() =>
+                  openWhatsApp(
+                    "Halo OYN Digital, saya tertarik untuk order sekarang."
+                  )
+                }
               >
                 Order Sekarang
               </Button>
@@ -491,6 +542,7 @@ function CTA() {
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white/10 bg-transparent"
+                onClick={() => openWhatsApp("")}
               >
                 Chat Kami
               </Button>
